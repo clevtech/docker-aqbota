@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sch="http://webservices.kazpost.kz/postamathierarchy/schema">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <sch:GetPostomatRequest>
+         <sch:Barcode>BARCODE</sch:Barcode>
+      </sch:GetPostomatRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

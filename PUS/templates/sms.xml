@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sch="http://webservices.kazpost.kz/altsmsgate/schema">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <sch:SendRequest>
+         <sch:Authentication>
+            <sch:UserName>robopostman</sch:UserName>
+            <sch:Password>Ubj0YlvYsGvhHDc9</sch:Password>
+         </sch:Authentication>
+       <sch:SmsList>
+           [body]
+         </sch:SmsList>
+      </sch:SendRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

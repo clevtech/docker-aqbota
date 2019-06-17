@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.service.ibank.modules.colvir.com/" xmlns:sup="http://colvir.com/modules/ibank/service/data/support">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:PostomatDLVRPOWithdraw>
+        <barCode>BARCODE</barCode>
+         <postomatCode>600100</postomatCode>
+         <userCode>Robot</userCode>
+      </ws:PostomatDLVRPOWithdraw>
+   </soapenv:Body>
+</soapenv:Envelope>

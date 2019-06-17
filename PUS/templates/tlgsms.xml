@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sch="http://webservices.kazpost.kz/altsmsgate/schema">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <sch:SendRequest>
+         <sch:Authentication>
+            <sch:UserName>test111</sch:UserName>
+            <sch:Password>test111</sch:Password>
+         </sch:Authentication>
+       <sch:SmsList>
+            <!--body-->
+            <sch:Sms>
+               <sch:TelegramText>[date] Vam postupila posylka v Robopochtaliyon: Astana, Mangilik El prospekt, C4.6. Kod dostupa [pin]. Srok dlya zabora posylki 30 minut.</sch:TelegramText>
+                <sch:PhoneNumber>[ID]</sch:PhoneNumber>
+            </sch:Sms>
+          <!--body-->
+         </sch:SmsList>
+      </sch:SendRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

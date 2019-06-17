@@ -1,0 +1,1 @@
+Templates for global flask server.

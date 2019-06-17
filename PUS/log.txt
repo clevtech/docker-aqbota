@@ -1,0 +1,505 @@
+Начало теста: 2019-06-10 19:54:56.059897
+########################################
+
+
+########################################
+Проверка посылки
+########################################
+
+
+=================================================
+Отправляю запрос для получения данных о посылке на url: http://pls-test.post.kz/api/service/postamatHierarchy?wsdl
+
+('<?xml version="1.0" encoding="UTF-8"?>\n'
+ '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" '
+ 'xmlns:sch="http://webservices.kazpost.kz/postamathierarchy/schema">\n'
+ '   <soapenv:Header/>\n'
+ '   <soapenv:Body>\n'
+ '      <sch:GetPostomatRequest>\n'
+ '         <sch:Barcode>KZ030601009KZ</sch:Barcode>\n'
+ '      </sch:GetPostomatRequest>\n'
+ '   </soapenv:Body>\n'
+ '</soapenv:Envelope>\n')
+--------------------------------------------------
+=================================================
+Принял ответ от сервера:
+
+<?xml version="1.0" ?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+	<soap:Body>
+		<GetPostomatResponse xmlns="http://webservices.kazpost.kz/postamathierarchy/schema">
+			<ResponseInfo>
+				<ResponseGenTime>2019-06-10T19:55:15.112+06:00</ResponseGenTime>
+				<ResponseText>Success</ResponseText>
+			</ResponseInfo>
+			<PostomatInfo>
+				<Barcode>KZ030601009KZ</Barcode>
+				<DirectCtg>Внутреннее</DirectCtg>
+				<MailCtg>Обыкновенное (ая)</MailCtg>
+				<ToDepIndex>600100</ToDepIndex>
+				<ToDepName>Астана-10</ToDepName>
+				<ToAddr>г. Астана, ул. Мирзояна, 1/1</ToAddr>
+				<Rcpn>АЙДАРБЕКОВ АЙДАРБЕК</Rcpn>
+				<RcpnPhone>77751121212</RcpnPhone>
+				<FrDepIndex>050045</FrDepIndex>
+				<FrDepName>059945</FrDepName>
+				<FrAddr>АЛМАТЫ, МИКРОРАЙОН АЛАТАУ, ПЕРЕУЛОК АЛАТАУ, ДОМ 104</FrAddr>
+				<Sndr>АДИЕВ ТОХТАР ГАЗИЗОВИЧ</Sndr>
+				<SndrPhone>7011111111</SndrPhone>
+				<PrnPostIndex>010010</PrnPostIndex>
+				<PrnDepName>г. Астана, ул. Мирзояна, 1/1</PrnDepName>
+			</PostomatInfo>
+		</GetPostomatResponse>
+	</soap:Body>
+</soap:Envelope>
+
+--------------------------------------------------
+=================================================
+Отправляю запрос для получения данных о наложке на url: http://pls-test.post.kz/api/service/postamat?wsdl
+
+('<?xml version="1.0" encoding="UTF-8"?>\n'
+ '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" '
+ 'xmlns:ws="http://ws.service.ibank.modules.colvir.com/" '
+ 'xmlns:sup="http://colvir.com/modules/ibank/service/data/support">\n'
+ '   <soapenv:Header/>\n'
+ '       <soapenv:Body>\n'
+ '          <ws:PostomatDLVRPOCashOnDeliveryReturn>\n'
+ '            <barCode>KZ030601009KZ</barCode>\n'
+ '          </ws:PostomatDLVRPOCashOnDeliveryReturn>\n'
+ '       </soapenv:Body>\n'
+ '</soapenv:Envelope>\n')
+--------------------------------------------------
+=================================================
+Принял ответ от сервера:
+
+<?xml version="1.0" ?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+	<soap:Body>
+		<ns15:PostomatDLVRPOCashOnDeliveryReturnResponse xmlns:ns11="http://colvir.com/modules/ibank/service/data/statement/result" xmlns:ns12="http://colvir.com/modules/ibank/service/data/postSubscription" xmlns:ns13="http://colvir.com/modules/ibank/service/data/cardpayment" xmlns:ns14="http://colvir.com/modules/ibank/service/data/payment" xmlns:ns15="http://ws.service.ibank.modules.colvir.com/" xmlns:ns2="http://colvir.com/modules/ibank/service/data/support" xmlns:ns3="http://colvir.com/modules/ibank/service/data/post" xmlns:ns4="http://colvir.com/modules/ibank/service/data/domain" xmlns:ns5="http://colvir.com/modules/ibank/service/data/specialpayment" xmlns:ns6="http://colvir.com/modules/ibank/service/data/payments" xmlns:ns7="http://colvir.com/modules/ibank/service/data/customer" xmlns:ns8="http://colvir.com/modules/ibank/service/data/loanagreement" xmlns:ns9="http://colvir.com/modules/ibank/service/data/creditcalculator" xmlns:xmime="http://www.w3.org/2005/05/xmlmime">
+			<result>
+				<ns2:responseTime>0</ns2:responseTime>
+				<ns2:responseDbTime>0</ns2:responseDbTime>
+				<ns3:amount>1</ns3:amount>
+				<ns3:isPayCashOnDelivery>false</ns3:isPayCashOnDelivery>
+				<ns3:status>
+					<ns3:code>ER_CODINFO</ns3:code>
+					<ns3:name>Метод GetCODInfo выдал неправильный ответ</ns3:name>
+				</ns3:status>
+				<ns3:commision>0</ns3:commision>
+			</result>
+		</ns15:PostomatDLVRPOCashOnDeliveryReturnResponse>
+	</soap:Body>
+</soap:Envelope>
+
+--------------------------------------------------
+===========================================
+Сохранил в логи следующее:
+{'address': 'Astana HUB',
+ 'barcode': 'KZ030601009KZ',
+ 'cash check': True,
+ 'client': 'АЙДАРБЕКОВ АЙДАРБЕК',
+ 'phone': '77751121212',
+ 'time': datetime.datetime(2019, 6, 10, 19, 55, 15, 591691)}
+===========================================
+
+
+
+########################################
+Хранение посылки
+########################################
+
+
+=================================================
+Отправляю запрос на хранение посылки на url: http://pls-test.post.kz/api/service/postamat?wsdl
+
+('<?xml version="1.0" encoding="UTF-8"?>\n'
+ '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" '
+ 'xmlns:ws="http://ws.service.ibank.modules.colvir.com/" '
+ 'xmlns:sup="http://colvir.com/modules/ibank/service/data/support">\n'
+ '   <soapenv:Header/>\n'
+ '   <soapenv:Body>\n'
+ '      <ws:PostomatDLVRPODelivery>\n'
+ '        <barCode>KZ030601009KZ</barCode>\n'
+ '         <postomatCode>600100</postomatCode>\n'
+ '        <userCode>Robot</userCode>\n'
+ '      </ws:PostomatDLVRPODelivery>\n'
+ '   </soapenv:Body>\n'
+ '</soapenv:Envelope>\n')
+--------------------------------------------------
+=================================================
+Принял ответ от сервера:
+
+<?xml version="1.0" ?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+	<soap:Body>
+		<ns15:PostomatDLVRPODeliveryResponse xmlns:ns11="http://colvir.com/modules/ibank/service/data/statement/result" xmlns:ns12="http://colvir.com/modules/ibank/service/data/postSubscription" xmlns:ns13="http://colvir.com/modules/ibank/service/data/cardpayment" xmlns:ns14="http://colvir.com/modules/ibank/service/data/payment" xmlns:ns15="http://ws.service.ibank.modules.colvir.com/" xmlns:ns2="http://colvir.com/modules/ibank/service/data/support" xmlns:ns3="http://colvir.com/modules/ibank/service/data/post" xmlns:ns4="http://colvir.com/modules/ibank/service/data/domain" xmlns:ns5="http://colvir.com/modules/ibank/service/data/specialpayment" xmlns:ns6="http://colvir.com/modules/ibank/service/data/payments" xmlns:ns7="http://colvir.com/modules/ibank/service/data/customer" xmlns:ns8="http://colvir.com/modules/ibank/service/data/loanagreement" xmlns:ns9="http://colvir.com/modules/ibank/service/data/creditcalculator" xmlns:xmime="http://www.w3.org/2005/05/xmlmime">
+			<result>
+				<ns2:responseTime>0</ns2:responseTime>
+				<ns2:responseDbTime>0</ns2:responseDbTime>
+				<ns3:status>
+					<ns3:code>0</ns3:code>
+					<ns3:name>РПО принято в постамат № 600100</ns3:name>
+				</ns3:status>
+			</result>
+		</ns15:PostomatDLVRPODeliveryResponse>
+	</soap:Body>
+</soap:Envelope>
+
+--------------------------------------------------
+===========================================
+Сохранил в логи следующее:
+{'barcode': 'KZ030601009KZ',
+ 'info': 'РПО принято в постамат № 600100',
+ 'pin': '9170',
+ 'status': '0',
+ 'time': datetime.datetime(2019, 6, 10, 19, 55, 35, 44245)}
+===========================================
+
+
+
+########################################
+СМС о хранении посылки
+########################################
+
+
+Sended request is:
+
+('<?xml version="1.0" encoding="UTF-8"?>\n'
+ '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" '
+ 'xmlns:sch="http://webservices.kazpost.kz/altsmsgate/schema">\n'
+ '   <soapenv:Header/>\n'
+ '   <soapenv:Body>\n'
+ '      <sch:SendRequest>\n'
+ '         <sch:Authentication>\n'
+ '            <sch:UserName>robopostman</sch:UserName>\n'
+ '            <sch:Password>Ubj0YlvYsGvhHDc9</sch:Password>\n'
+ '         </sch:Authentication>\n'
+ '       <sch:SmsList>\n'
+ '           <sch:Sms><sch:SmsText>Ваша посылка KZ030601009KZ передана '
+ 'роботу-курьеру на хранение, в ближайшее время ожидайте доставку по адресу '
+ 'Astana HUB</sch:SmsText><sch:TelegramText>Ваша посылка KZ030601009KZ '
+ 'передана роботу-курьеру на хранение, в ближайшее время ожидайте доставку по '
+ 'адресу Astana HUB</sch:TelegramText><sch:PostKzText>Ваша посылка '
+ 'KZ030601009KZ передана роботу-курьеру на хранение, в ближайшее время '
+ 'ожидайте доставку по адресу Astana '
+ 'HUB</sch:PostKzText><sch:PhoneNumber>77771111111</sch:PhoneNumber></sch:Sms>\n'
+ '         </sch:SmsList>\n'
+ '      </sch:SendRequest>\n'
+ '   </soapenv:Body>\n'
+ '</soapenv:Envelope>\n')
+
+=================================================
+Отправляю запрос смс хранения на url: http://92.46.190.22:8080/altsmsgate/altsmsgate.wsdl
+
+('<?xml version="1.0" encoding="UTF-8"?>\n'
+ '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" '
+ 'xmlns:sch="http://webservices.kazpost.kz/altsmsgate/schema">\n'
+ '   <soapenv:Header/>\n'
+ '   <soapenv:Body>\n'
+ '      <sch:SendRequest>\n'
+ '         <sch:Authentication>\n'
+ '            <sch:UserName>robopostman</sch:UserName>\n'
+ '            <sch:Password>Ubj0YlvYsGvhHDc9</sch:Password>\n'
+ '         </sch:Authentication>\n'
+ '       <sch:SmsList>\n'
+ '           [body]\n'
+ '         </sch:SmsList>\n'
+ '      </sch:SendRequest>\n'
+ '   </soapenv:Body>\n'
+ '</soapenv:Envelope>\n')
+--------------------------------------------------
+=================================================
+Принял ответ от сервера:
+
+<?xml version="1.0" ?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+	<SOAP-ENV:Header/>
+	<SOAP-ENV:Body>
+		<ns2:SendResponse xmlns:ns2="http://webservices.kazpost.kz/altsmsgate/schema">
+			<ns2:AltSmsIdList>
+				<ns2:AltSmsId>
+					<ns2:AltSmsId>ERROR</ns2:AltSmsId>
+					<ns2:AltSmsStatus>DUPLICATE REQUEST</ns2:AltSmsStatus>
+				</ns2:AltSmsId>
+			</ns2:AltSmsIdList>
+			<ns2:ResponseInfo>
+				<ns2:ErrorCode>000</ns2:ErrorCode>
+				<ns2:ErrorMessage>success</ns2:ErrorMessage>
+			</ns2:ResponseInfo>
+		</ns2:SendResponse>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+--------------------------------------------------
+===========================================
+Сохранил в логи следующее:
+{'place': 'Astana HUB',
+ 'sms': [{'barcode': 'KZ030601009KZ',
+          'phone': '77771111111',
+          'pin': '9170',
+          'status': 'DUPLICATE REQUEST'}],
+ 'time': datetime.datetime(2019, 6, 10, 19, 55, 35, 114121)}
+===========================================
+
+
+
+########################################
+СМС о доставке посылки
+########################################
+
+
+Sended request is:
+
+('<?xml version="1.0" encoding="UTF-8"?>\n'
+ '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" '
+ 'xmlns:sch="http://webservices.kazpost.kz/altsmsgate/schema">\n'
+ '   <soapenv:Header/>\n'
+ '   <soapenv:Body>\n'
+ '      <sch:SendRequest>\n'
+ '         <sch:Authentication>\n'
+ '            <sch:UserName>robopostman</sch:UserName>\n'
+ '            <sch:Password>Ubj0YlvYsGvhHDc9</sch:Password>\n'
+ '         </sch:Authentication>\n'
+ '       <sch:SmsList>\n'
+ '           <sch:Sms><sch:SmsText>Робот почтальон приехал доставить Вам '
+ 'посылку KZ030601009KZ. Он ждет вас в Astana HUB до 2019-06-10 20:25. Введите '
+ '9170 для получения доступа на дисплее '
+ 'робота.</sch:SmsText><sch:TelegramText>Робот почтальон приехал доставить Вам '
+ 'посылку KZ030601009KZ. Он ждет вас в Astana HUB до 2019-06-10 20:25. Введите '
+ '9170 для получения доступа на дисплее '
+ 'робота.</sch:TelegramText><sch:PostKzText>Робот почтальон приехал доставить '
+ 'Вам посылку KZ030601009KZ. Он ждет вас в Astana HUB до 2019-06-10 20:25. '
+ 'Введите 9170 для получения доступа на дисплее '
+ 'робота.</sch:PostKzText><sch:PhoneNumber>77771111111</sch:PhoneNumber></sch:Sms>\n'
+ '         </sch:SmsList>\n'
+ '      </sch:SendRequest>\n'
+ '   </soapenv:Body>\n'
+ '</soapenv:Envelope>\n')
+
+=================================================
+Отправляю запрос смс посылки на url: http://92.46.190.22:8080/altsmsgate/altsmsgate.wsdl
+
+('<?xml version="1.0" encoding="UTF-8"?>\n'
+ '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" '
+ 'xmlns:sch="http://webservices.kazpost.kz/altsmsgate/schema">\n'
+ '   <soapenv:Header/>\n'
+ '   <soapenv:Body>\n'
+ '      <sch:SendRequest>\n'
+ '         <sch:Authentication>\n'
+ '            <sch:UserName>robopostman</sch:UserName>\n'
+ '            <sch:Password>Ubj0YlvYsGvhHDc9</sch:Password>\n'
+ '         </sch:Authentication>\n'
+ '       <sch:SmsList>\n'
+ '           [body]\n'
+ '         </sch:SmsList>\n'
+ '      </sch:SendRequest>\n'
+ '   </soapenv:Body>\n'
+ '</soapenv:Envelope>\n')
+--------------------------------------------------
+=================================================
+Принял ответ от сервера:
+
+<?xml version="1.0" ?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+	<SOAP-ENV:Header/>
+	<SOAP-ENV:Body>
+		<ns2:SendResponse xmlns:ns2="http://webservices.kazpost.kz/altsmsgate/schema">
+			<ns2:AltSmsIdList>
+				<ns2:AltSmsId>
+					<ns2:AltSmsId>69064433</ns2:AltSmsId>
+					<ns2:AltSmsStatus>SCHEDULED(100)</ns2:AltSmsStatus>
+				</ns2:AltSmsId>
+			</ns2:AltSmsIdList>
+			<ns2:ResponseInfo>
+				<ns2:ErrorCode>000</ns2:ErrorCode>
+				<ns2:ErrorMessage>success</ns2:ErrorMessage>
+			</ns2:ResponseInfo>
+		</ns2:SendResponse>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+--------------------------------------------------
+===========================================
+Сохранил в логи следующее:
+{'place': 'Astana HUB',
+ 'sms': [{'barcode': 'KZ030601009KZ',
+          'phone': '77771111111',
+          'pin': '9170',
+          'status': 'SCHEDULED(100)'}],
+ 'time': datetime.datetime(2019, 6, 10, 19, 55, 54, 246634)}
+===========================================
+
+
+
+########################################
+Вручение посылки клиенту
+########################################
+
+
+=================================================
+Отправляю запрос на выдачу посылки на url: http://pls-test.post.kz/api/service/postamat?wsdl
+
+('<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" '
+ 'xmlns:ws="http://ws.service.ibank.modules.colvir.com/" '
+ 'xmlns:sup="http://colvir.com/modules/ibank/service/data/support">\n'
+ '   <soapenv:Header/>\n'
+ '   <soapenv:Body>\n'
+ '      <ws:PostomatDLVRPODeliveryConfirm>\n'
+ '         <barCode>KZ030601009KZ</barCode>\n'
+ '         <postomatCode>600100</postomatCode>\n'
+ '      </ws:PostomatDLVRPODeliveryConfirm>\n'
+ '   </soapenv:Body>\n'
+ '</soapenv:Envelope>\n')
+--------------------------------------------------
+=================================================
+Принял ответ от сервера:
+
+<?xml version="1.0" ?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+	<soap:Body>
+		<ns15:PostomatDLVRPODeliveryConfirmResponse xmlns:ns11="http://colvir.com/modules/ibank/service/data/statement/result" xmlns:ns12="http://colvir.com/modules/ibank/service/data/postSubscription" xmlns:ns13="http://colvir.com/modules/ibank/service/data/cardpayment" xmlns:ns14="http://colvir.com/modules/ibank/service/data/payment" xmlns:ns15="http://ws.service.ibank.modules.colvir.com/" xmlns:ns2="http://colvir.com/modules/ibank/service/data/support" xmlns:ns3="http://colvir.com/modules/ibank/service/data/post" xmlns:ns4="http://colvir.com/modules/ibank/service/data/domain" xmlns:ns5="http://colvir.com/modules/ibank/service/data/specialpayment" xmlns:ns6="http://colvir.com/modules/ibank/service/data/payments" xmlns:ns7="http://colvir.com/modules/ibank/service/data/customer" xmlns:ns8="http://colvir.com/modules/ibank/service/data/loanagreement" xmlns:ns9="http://colvir.com/modules/ibank/service/data/creditcalculator" xmlns:xmime="http://www.w3.org/2005/05/xmlmime">
+			<result>
+				<ns2:responseTime>0</ns2:responseTime>
+				<ns2:responseDbTime>0</ns2:responseDbTime>
+				<ns3:status>
+					<ns3:code>0</ns3:code>
+					<ns3:name>success</ns3:name>
+				</ns3:status>
+			</result>
+		</ns15:PostomatDLVRPODeliveryConfirmResponse>
+	</soap:Body>
+</soap:Envelope>
+
+--------------------------------------------------
+===========================================
+Сохранил в логи следующее:
+{'barcode': 'KZ030601009KZ',
+ 'info': 'success',
+ 'status': '0',
+ 'time': datetime.datetime(2019, 6, 10, 19, 56, 13, 581947)}
+===========================================
+
+
+
+########################################
+Тест сценария возврата курьеру: хранение посылки
+########################################
+
+
+=================================================
+Отправляю запрос на хранение посылки на url: http://pls-test.post.kz/api/service/postamat?wsdl
+
+('<?xml version="1.0" encoding="UTF-8"?>\n'
+ '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" '
+ 'xmlns:ws="http://ws.service.ibank.modules.colvir.com/" '
+ 'xmlns:sup="http://colvir.com/modules/ibank/service/data/support">\n'
+ '   <soapenv:Header/>\n'
+ '   <soapenv:Body>\n'
+ '      <ws:PostomatDLVRPODelivery>\n'
+ '        <barCode>KZ030601009KZ</barCode>\n'
+ '         <postomatCode>600100</postomatCode>\n'
+ '        <userCode>Robot</userCode>\n'
+ '      </ws:PostomatDLVRPODelivery>\n'
+ '   </soapenv:Body>\n'
+ '</soapenv:Envelope>\n')
+--------------------------------------------------
+=================================================
+Принял ответ от сервера:
+
+<?xml version="1.0" ?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+	<soap:Body>
+		<ns15:PostomatDLVRPODeliveryResponse xmlns:ns11="http://colvir.com/modules/ibank/service/data/statement/result" xmlns:ns12="http://colvir.com/modules/ibank/service/data/postSubscription" xmlns:ns13="http://colvir.com/modules/ibank/service/data/cardpayment" xmlns:ns14="http://colvir.com/modules/ibank/service/data/payment" xmlns:ns15="http://ws.service.ibank.modules.colvir.com/" xmlns:ns2="http://colvir.com/modules/ibank/service/data/support" xmlns:ns3="http://colvir.com/modules/ibank/service/data/post" xmlns:ns4="http://colvir.com/modules/ibank/service/data/domain" xmlns:ns5="http://colvir.com/modules/ibank/service/data/specialpayment" xmlns:ns6="http://colvir.com/modules/ibank/service/data/payments" xmlns:ns7="http://colvir.com/modules/ibank/service/data/customer" xmlns:ns8="http://colvir.com/modules/ibank/service/data/loanagreement" xmlns:ns9="http://colvir.com/modules/ibank/service/data/creditcalculator" xmlns:xmime="http://www.w3.org/2005/05/xmlmime">
+			<result>
+				<ns2:responseTime>0</ns2:responseTime>
+				<ns2:responseDbTime>0</ns2:responseDbTime>
+				<ns3:status>
+					<ns3:code>0</ns3:code>
+					<ns3:name>РПО принято в постамат № 600100</ns3:name>
+				</ns3:status>
+			</result>
+		</ns15:PostomatDLVRPODeliveryResponse>
+	</soap:Body>
+</soap:Envelope>
+
+--------------------------------------------------
+===========================================
+Сохранил в логи следующее:
+{'barcode': 'KZ030601009KZ',
+ 'info': 'РПО принято в постамат № 600100',
+ 'pin': '2968',
+ 'status': '0',
+ 'time': datetime.datetime(2019, 6, 10, 19, 56, 48, 989312)}
+===========================================
+
+
+
+########################################
+Тест сценария возврата курьеру: возврат
+########################################
+
+
+=================================================
+Отправляю запрос на возврат посылки на url: http://pls-test.post.kz/api/service/postamat?wsdl
+
+('<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" '
+ 'xmlns:ws="http://ws.service.ibank.modules.colvir.com/" '
+ 'xmlns:sup="http://colvir.com/modules/ibank/service/data/support">\n'
+ '   <soapenv:Header/>\n'
+ '   <soapenv:Body>\n'
+ '      <ws:PostomatDLVRPODeliveryConfirm>\n'
+ '         <barCode>KZ030601009KZ</barCode>\n'
+ '         <postomatCode>600100</postomatCode>\n'
+ '      </ws:PostomatDLVRPODeliveryConfirm>\n'
+ '   </soapenv:Body>\n'
+ '</soapenv:Envelope>\n')
+--------------------------------------------------
+=================================================
+Принял ответ от сервера:
+
+<?xml version="1.0" ?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+	<soap:Body>
+		<ns15:PostomatDLVRPODeliveryConfirmResponse xmlns:ns11="http://colvir.com/modules/ibank/service/data/statement/result" xmlns:ns12="http://colvir.com/modules/ibank/service/data/postSubscription" xmlns:ns13="http://colvir.com/modules/ibank/service/data/cardpayment" xmlns:ns14="http://colvir.com/modules/ibank/service/data/payment" xmlns:ns15="http://ws.service.ibank.modules.colvir.com/" xmlns:ns2="http://colvir.com/modules/ibank/service/data/support" xmlns:ns3="http://colvir.com/modules/ibank/service/data/post" xmlns:ns4="http://colvir.com/modules/ibank/service/data/domain" xmlns:ns5="http://colvir.com/modules/ibank/service/data/specialpayment" xmlns:ns6="http://colvir.com/modules/ibank/service/data/payments" xmlns:ns7="http://colvir.com/modules/ibank/service/data/customer" xmlns:ns8="http://colvir.com/modules/ibank/service/data/loanagreement" xmlns:ns9="http://colvir.com/modules/ibank/service/data/creditcalculator" xmlns:xmime="http://www.w3.org/2005/05/xmlmime">
+			<result>
+				<ns2:responseTime>0</ns2:responseTime>
+				<ns2:responseDbTime>0</ns2:responseDbTime>
+				<ns3:status>
+					<ns3:code>0</ns3:code>
+					<ns3:name>success</ns3:name>
+				</ns3:status>
+			</result>
+		</ns15:PostomatDLVRPODeliveryConfirmResponse>
+	</soap:Body>
+</soap:Envelope>
+
+--------------------------------------------------
+<?xml version="1.0" ?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+	<soap:Body>
+		<ns15:PostomatDLVRPODeliveryConfirmResponse xmlns:ns11="http://colvir.com/modules/ibank/service/data/statement/result" xmlns:ns12="http://colvir.com/modules/ibank/service/data/postSubscription" xmlns:ns13="http://colvir.com/modules/ibank/service/data/cardpayment" xmlns:ns14="http://colvir.com/modules/ibank/service/data/payment" xmlns:ns15="http://ws.service.ibank.modules.colvir.com/" xmlns:ns2="http://colvir.com/modules/ibank/service/data/support" xmlns:ns3="http://colvir.com/modules/ibank/service/data/post" xmlns:ns4="http://colvir.com/modules/ibank/service/data/domain" xmlns:ns5="http://colvir.com/modules/ibank/service/data/specialpayment" xmlns:ns6="http://colvir.com/modules/ibank/service/data/payments" xmlns:ns7="http://colvir.com/modules/ibank/service/data/customer" xmlns:ns8="http://colvir.com/modules/ibank/service/data/loanagreement" xmlns:ns9="http://colvir.com/modules/ibank/service/data/creditcalculator" xmlns:xmime="http://www.w3.org/2005/05/xmlmime">
+			<result>
+				<ns2:responseTime>0</ns2:responseTime>
+				<ns2:responseDbTime>0</ns2:responseDbTime>
+				<ns3:status>
+					<ns3:code>0</ns3:code>
+					<ns3:name>success</ns3:name>
+				</ns3:status>
+			</result>
+		</ns15:PostomatDLVRPODeliveryConfirmResponse>
+	</soap:Body>
+</soap:Envelope>
+
+===========================================
+Сохранил в логи следующее:
+{'barcode': 'KZ030601009KZ',
+ 'info': 'success',
+ 'status': '0',
+ 'time': datetime.datetime(2019, 6, 10, 19, 57, 8, 431175)}
+===========================================
+
+
+
+########################################
+Конец теста: 2019-06-10 19:57:08.432021
+########################################

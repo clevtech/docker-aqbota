@@ -1,0 +1,87 @@
+version: "3"
+services:
+  tcp-server:
+    restart: always
+    build: ./control
+    command: python3 -u ./tcp-server.py
+    ports:
+      - "6767:6767"
+    volumes:
+      - ./data:/robot_volume/control
+    devices:
+      - "/dev/:/dev/"
+    links:
+      - database
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "10"
+  mongo-express:
+    restart: always
+    image: mongo-express
+    environment:
+        - ME_CONFIG_MONGODB_SERVER=database
+        - ME_CONFIG_MONGODB_PORT=27017
+        - ME_CONFIG_MONGODB_ENABLE_ADMIN=false
+        - ME_CONFIG_MONGODB_AUTH_DATABASE=robot
+        - ME_CONFIG_BASICAUTH_USERNAME=robot
+        - ME_CONFIG_BASICAUTH_PASSWORD=1
+    ports:
+      - "8081:8081"
+    links:
+      - database
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "10"
+    depends_on:
+      - database
+  database:
+    restart: always
+    image: mongo:3.0.2
+    volumes:
+      - ./:/robot_volume
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "10"
+  pus-client:
+    restart: always
+    build: ./PUS
+    command: python3 -u ./pus.py
+    ports:
+      - "8282:8282"
+    volumes:
+      - ./:/robot_volume/PUS/
+    links:
+      - database
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "10"
+    depends_on:
+      - database
+  interface:
+    restart: always
+    build: ./interface
+    command: python3 -u ./interface.py
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./:/robot_volume/interface/
+    links:
+      - database
+      - pus-client
+      - tcp-server
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "10"
+    depends_on:
+      - database
+      - pus-client

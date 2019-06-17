@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sms="http://kazpost.kz/smsgate">
+    <soapenv:Header>
+<soapenv:Username>test111</soapenv:Username>
+<soapenv:Password>test111</soapenv:Password>
+</soapenv:Header>
+   <soapenv:Body>
+      <sms:send>
+        [body]
+      </sms:send>
+   </soapenv:Body>
+</soapenv:Envelope>
+

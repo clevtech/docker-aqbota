@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html>
+<title>Робот почтальон</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
+.button1 {
+    background-color: #FFB800;
+    border-radius: 34px;
+    border: none;
+    color: #004FA8;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 1px 2px;
+    cursor: pointer;
+    font-weight: bold;
+	font-family: "Open Sans", sans-serif;
+    width: 50%;
+}
+.input1 {
+    border: 4px solid orange;
+    width: 70%;
+    height: 50px;
+    padding: 4px 8px;
+}
+.backy {
+	background-color: #FFB800;
+    border: none;
+    color: #004FA8;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 1px 2px;
+    cursor: pointer;
+    font-weight: bold;
+	font-family: "Open Sans", sans-serif;
+    width: 100%;
+}
+.fronty {
+	background-color: #004FA8;
+    text-align: end;
+    border: none;
+    color: #FFB800;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 0px 80%;
+    cursor: pointer;
+    font-weight: bold;
+	font-family: "Open Sans", sans-serif;
+}
+</style>
+<body class="w3-theme-l5">
+<!-- Page Container -->
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:20px">
+  <!-- The Grid -->
+  <div class="w3-row">
+    <!-- Left Column -->
+    <div class="w3-col m4">
+      <!-- Alert Box -->
+      <div class="w3-container w3-display-container backy">
+        <span onclick="this.parentElement.style.display='none'" class="w3-button fronty">
+          <i class="fa fa-remove"></i>
+        </span>
+        <p>{{alert}}</p>
+      </div>
+
+    <!-- End Left Column -->
+    </div>
+
+    <!-- Middle Column -->
+    <div class="w3-col m7">
+
+      <div class="w3-row-padding">
+        <div class="w3-col m12">
+          <div class="w3-card w3-white">
+            <div class="w3-container w3-padding">
+              <form action="/robot/" method="POST">
+              <p><input type="password" contenteditable="true" class="input1" pattern="[0-9]*" inputmode="numeric" name="passcode" placeholder="Введите пароль"/><img src="https://post.kz/react/static/media/saver.708102fc.svg" width="20%" align="right"></p>
+              <br><input type="submit" class="button1" name="my-form" value="Принять"/>
+           	</form>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- End Middle Column -->
+    </div>
+  <!-- End Grid -->
+  </div>
+
+<!-- End Page Container -->
+</div>
+<br>
+
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sch="http://webservices.kazpost.kz/altsmsgate/schema">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <sch:StatusRequest>
+         <sch:Authentication>
+            <sch:UserName>test111</sch:UserName>
+            <sch:Password>test111</sch:Password>
+         </sch:Authentication>
+         <!--1 to 100 repetitions:-->
+         [body]
+      </sch:StatusRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
