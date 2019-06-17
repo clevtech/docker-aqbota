@@ -50,7 +50,7 @@ def action(i, nano):
 if __name__ == "__main__":
 
     nano = None
-    # nano = connect_to()
+    nano = connect_to()
     while True:
         connection, address = server_socket.accept()
         print("new connection from {address}".format(address=address))
