@@ -2,6 +2,7 @@ version: "3"
 services:
   tcp-server:
     restart: always
+    privileged: true
     build: ./control
     command: python3 -u ./tcp-server.py
     ports:
@@ -9,7 +10,7 @@ services:
     volumes:
       - ./data:/robot_volume/control
     devices:
-      - "/dev/ttyUSB0:/dev/ttyUSB0"
+      - "/dev/:/dev/"
     links:
       - database
     logging:
