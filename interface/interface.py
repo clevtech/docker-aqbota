@@ -243,10 +243,10 @@ def robot(destination=None):
             else:
                 cells[i] = "Свободно"
 
-        cell0 = cells[0]
-        cell1 = cells[1]
-        cell2 = cells[2]
-        cell3 = cells[3]
+        cell0 = cells[3]
+        cell1 = cells[2]
+        cell2 = cells[1]
+        cell3 = cells[0]
 
         return render_template(
             "robot.html", **locals())
@@ -302,10 +302,10 @@ def cell(destination, cellid):
             else:
                 cells[i] = "Свободно"
 
-            cell0 = cells[0]
-            cell1 = cells[1]
-            cell2 = cells[2]
-            cell3 = cells[3]
+            cell0 = cells[3]
+            cell1 = cells[2]
+            cell2 = cells[1]
+            cell3 = cells[0]
         return render_template(
             "robot.html", **locals())
     else:
@@ -326,7 +326,19 @@ def cancel():
 
 @app.route("/sended/<destination>/", methods=["GET", "POST"])
 def sended(destination):
-    # TODO: send smses
+    global tripID
+    client = MongoClient('mongodb://database:27017/')
+    db = client['robot']
+    collection = db["cells"]
+    result = collection.find_one({"ID": tripID})
+    bars = []
+    for i in range(4):
+        bar = result["cells"][i]["barcode"]
+        if bar:
+            bars.append(i)
+
+    PUS_client("s/" + str(bars))
+
     value = False
     while not value:
         value = send_tlg_msg_checkpoint()
@@ -337,6 +349,7 @@ def sended(destination):
     collection.delete_many({})
     collection.insert_one({"time_started": datetime.datetime.now()})
 
+    PUS_client("k/" + str(bars))
     return render_template(
         "give.html", **locals())
 
