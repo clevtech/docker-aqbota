@@ -337,7 +337,7 @@ def sended(destination):
         if bar:
             bars.append(i)
 
-    PUS_client("s/" + str(bars))
+    PUS_client("s/" + str(bars).replace("\'", "\""))
 
     value = False
     while not value:
@@ -349,7 +349,7 @@ def sended(destination):
     collection.delete_many({})
     collection.insert_one({"time_started": datetime.datetime.now()})
 
-    PUS_client("k/" + str(bars))
+    PUS_client("k/" + str(bars).replace("\'", "\""))
     return render_template(
         "give.html", **locals())
 
