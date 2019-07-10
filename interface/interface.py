@@ -335,7 +335,7 @@ def sended(destination):
     for i in range(4):
         bar = result["cells"][i]["barcode"]
         if bar:
-            bars.append(i)
+            bars.append(bar)
 
     PUS_client("s/" + str(bars).replace("\'", "\""))
 
