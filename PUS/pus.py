@@ -520,6 +520,7 @@ if __name__ == "__main__":
         print("new connection from {address}".format(address=address))
 
         data = connection.recv(1024).decode('utf-8')
+        print("Data is: " + data)
         if data:
             if data[0] == "c":
                 try:

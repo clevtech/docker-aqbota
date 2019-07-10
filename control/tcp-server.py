@@ -19,7 +19,7 @@ print('Door and light control server is working...')
 
 
 def serial_ports():
-    ports = glob.glob('/dev/ttyUSB0')
+    ports = glob.glob('/dev/ttyUSB*')
 
     result = ports
     return result
