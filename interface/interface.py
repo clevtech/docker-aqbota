@@ -45,25 +45,7 @@ def open_door(id):
 
 def send_tlg_msg_checkpoint():
     head = "https://api.telegram.org/bot783776854:AAEYHSm-J0H8BOz1XK3irggOcGxc90K_stI/sendMessage?chat_id=-367528081&text="
-    pin = ''.join(sample("0123456789", 4))
-    msg = "Я приехал? Если да - ответь мне этим кодом: " + pin
-    try:
-        while 1:
-            try:
-                requests.get(head+msg)
-                break
-            except:
-                pass
-        while 1:
-            time.sleep(10)
-            answer = requests.get("https://api.telegram.org/bot783776854:AAEYHSm-J0H8BOz1XK3irggOcGxc90K_stI/getUpdates")
-            if answer:
-                text = json.loads(answer.content.decode('utf-8'))["result"][-1]["message"]["text"]
-                if text == pin:
-                    requests.get(head + "Okay, иду дальше по алгоритму")
-                    return True
-    except:
-        pass
+    msg = "Я еду"
 
 
 def send_tlg_msg(msg):
